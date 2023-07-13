@@ -1,41 +1,33 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "contex",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "ConTex",
+	"description": "A Fabric library mod for (de)serializing custom text contents",
 	"authors": [
-		"Me!"
+		"eggohito"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/eggohito/ConTex"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/contex/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"io.github.eggohito.contex.Contex"
 		],
-		"client": [
-			"com.example.ExampleModClient"
+		"preLaunch": [
+			"io.github.eggohito.contex.integration.ContexIntegration::registerVanilla"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+      "contex.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
