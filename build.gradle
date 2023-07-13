@@ -19,10 +19,12 @@ repositories {
 }
 
 loom {
+
+	accessWidenerPath.set(file("src/main/resources/contex.accesswidener"))
     splitEnvironmentSourceSets()
 
 	mods {
-		"modid" {
+		"contex" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

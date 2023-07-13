@@ -2,7 +2,6 @@ package io.github.eggohito.contex.integration;
 
 import com.google.gson.*;
 import io.github.eggohito.contex.api.event.text.TextContentCallback;
-import io.github.eggohito.contex.mixin.TextSerializerAccessor;
 import net.minecraft.text.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
@@ -63,7 +62,7 @@ public class ContexIntegration {
                         Object[] args = new Object[argsJsonArray.size()];
 
                         for (int i = 0; i < args.length; ++i) {
-                            args[i] = TextSerializerAccessor.callOptimizeArgument(serializer.deserialize(argsJsonArray.get(i), type, jsonDeserializationContext));
+                            args[i] = Text.Serializer.optimizeArgument(serializer.deserialize(argsJsonArray.get(i), type, jsonDeserializationContext));
                         }
 
                         return TypedActionResult.success(Optional.of(Text.translatableWithFallback(translationKey, fallbackString, args)));
@@ -87,7 +86,7 @@ public class ContexIntegration {
                 }
 
                 if (jsonObject.has("selector")) {
-                    Optional<Text> separator = ((TextSerializerAccessor) serializer).callGetSeparator(type, jsonDeserializationContext, jsonObject);
+                    Optional<Text> separator = serializer.getSeparator(type, jsonDeserializationContext, jsonObject);
                     return TypedActionResult.success(Optional.of(Text.selector(JsonHelper.getString(jsonObject, "selector"), separator)));
                 }
 
@@ -98,7 +97,7 @@ public class ContexIntegration {
                 if (jsonObject.has("nbt")) {
 
                     String stringifiedNbt = JsonHelper.getString(jsonObject, "nbt");
-                    Optional<Text> separator = ((TextSerializerAccessor) serializer).callGetSeparator(type, jsonDeserializationContext, jsonObject);
+                    Optional<Text> separator = serializer.getSeparator(type, jsonDeserializationContext, jsonObject);
                     boolean shouldInterpret = JsonHelper.getBoolean(jsonObject, "interpret", false);
 
                     NbtDataSource nbtDataSource;
@@ -129,7 +128,7 @@ public class ContexIntegration {
                 JsonObject jsonObject = new JsonObject();
 
                 if (!text.getStyle().isEmpty()) {
-                    ((TextSerializerAccessor) serializer).callAddStyle(text.getStyle(), jsonObject, jsonSerializationContext);
+                    serializer.addStyle(text.getStyle(), jsonObject, jsonSerializationContext);
                 }
 
                 if (!text.getSiblings().isEmpty()) {
@@ -198,7 +197,7 @@ public class ContexIntegration {
                 if (textContent instanceof SelectorTextContent selectorTextContent) {
 
                     jsonObject.addProperty("selector", selectorTextContent.getPattern());
-                    ((TextSerializerAccessor) serializer).callAddSeparator(jsonSerializationContext, jsonObject, selectorTextContent.getSeparator());
+                    serializer.addSeparator(jsonSerializationContext, jsonObject, selectorTextContent.getSeparator());
 
                     return TypedActionResult.success(Optional.of(jsonObject));
 
@@ -213,7 +212,7 @@ public class ContexIntegration {
 
                     jsonObject.addProperty("nbt", nbtTextContent.getPath());
                     jsonObject.addProperty("interpret", nbtTextContent.shouldInterpret());
-                    ((TextSerializerAccessor) serializer).callAddSeparator(jsonSerializationContext, jsonObject, nbtTextContent.getSeparator());
+                    serializer.addSeparator(jsonSerializationContext, jsonObject, nbtTextContent.getSeparator());
 
                     NbtDataSource nbtDataSource = nbtTextContent.getDataSource();
                     if (nbtDataSource instanceof BlockNbtDataSource blockNbtDataSource) {

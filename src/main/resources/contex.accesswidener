@@ -1,0 +1,6 @@
+accessWidener   v1  named
+
+accessible method net/minecraft/text/Text$Serializer optimizeArgument (Ljava/lang/Object;)Ljava/lang/Object;
+accessible method net/minecraft/text/Text$Serializer getSeparator (Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;Lcom/google/gson/JsonObject;)Ljava/util/Optional;
+accessible method net/minecraft/text/Text$Serializer addStyle (Lnet/minecraft/text/Style;Lcom/google/gson/JsonObject;Lcom/google/gson/JsonSerializationContext;)V
+accessible method net/minecraft/text/Text$Serializer addSeparator (Lcom/google/gson/JsonSerializationContext;Lcom/google/gson/JsonObject;Ljava/util/Optional;)V
