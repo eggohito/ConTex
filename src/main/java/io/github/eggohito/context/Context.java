@@ -1,11 +1,11 @@
-package io.github.eggohito.contex;
+package io.github.eggohito.context;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Contex implements ModInitializer {
+public class Context implements ModInitializer {
 
     public static final String MOD_NAMESPACE = "contex";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAMESPACE);

@@ -1,28 +1,28 @@
 {
 	"schemaVersion": 1,
-	"id": "contex",
+	"id": "context",
 	"version": "${version}",
-	"name": "ConTex",
-	"description": "A Fabric library mod for (de)serializing custom text contents",
+	"name": "Context",
+	"description": "A Fabric library mod for serializing/deserializing custom text contents.",
 	"authors": [
 		"eggohito"
 	],
 	"contact": {
-		"sources": "https://github.com/eggohito/ConTex"
+		"sources": "https://github.com/eggohito/context"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/contex/icon.png",
+	"icon": "assets/context/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"io.github.eggohito.contex.Contex"
+			"io.github.eggohito.context.Context"
 		],
 		"preLaunch": [
-			"io.github.eggohito.contex.integration.ContexIntegration::registerVanilla"
+			"io.github.eggohito.context.integration.ContextIntegration::registerVanilla"
 		]
 	},
 	"mixins": [
-      "contex.mixins.json"
+		"context.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",

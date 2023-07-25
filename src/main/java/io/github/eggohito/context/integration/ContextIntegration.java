@@ -1,7 +1,7 @@
-package io.github.eggohito.contex.integration;
+package io.github.eggohito.context.integration;
 
 import com.google.gson.*;
-import io.github.eggohito.contex.api.event.text.TextContentCallback;
+import io.github.eggohito.context.api.event.text.TextContentCallback;
 import net.minecraft.text.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
@@ -9,7 +9,10 @@ import net.minecraft.util.TypedActionResult;
 
 import java.util.Optional;
 
-public class ContexIntegration {
+/**
+ *  A class for integrating serializers/deserializers for vanilla text contents.
+ */
+public class ContextIntegration {
 
     public static void registerVanilla() {
 

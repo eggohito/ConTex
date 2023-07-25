@@ -1,7 +1,7 @@
-package io.github.eggohito.contex.mixin;
+package io.github.eggohito.context.mixin;
 
 import com.google.gson.*;
-import io.github.eggohito.contex.api.event.text.TextContentCallback;
+import io.github.eggohito.context.api.event.text.TextContentCallback;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
