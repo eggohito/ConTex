@@ -20,11 +20,11 @@ repositories {
 
 loom {
 
-	accessWidenerPath.set(file("src/main/resources/contex.accesswidener"))
+	accessWidenerPath.set(file("src/main/resources/context.accesswidener"))
     splitEnvironmentSourceSets()
 
 	mods {
-		"contex" {
+		"context" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
